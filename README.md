@@ -1,0 +1,2 @@
+MNProximityManager-Android-SDK
+==============================
