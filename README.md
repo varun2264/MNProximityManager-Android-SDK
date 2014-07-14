@@ -4,7 +4,7 @@ Android Proximity Manager SDK 0.1.0
 The Android Proximity Manager, _APM_ from now on, is a library dedicated to manage the interaction between an App and Mobiquity's beacons network. The integration of this SDK will enable your App to react based on the proximity to a beacon of yours or Mobiquity's. At the time of this writing the SDK version is **0.1.0**, so some deep changes to the api might come up in future versions.
 
 ## Release notes
-* ###0.1.0  
+* ### 0.1.0  
 First release (alpha).
 
 
@@ -327,6 +327,90 @@ You can get a lot of intrinsic information about the emitting device from the _B
 * Elapsed time
 * Estimated announcement period
 * Announcements counter
+
+###Tracking
+
+
+As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) when a beacon is first discovered and also when it becomes out of range. Besides these automatic events you can manually track other events from the BeaconManager. Following you have some examples:
+
+```
+@Override
+public void onListItemClick(ListView l, View v, int position, long id ){
+			
+	Campaign campaign = DataManager.getAllCampaigns().get(position);
+	MobiquityManager.sendCampaignViewedEvent(campaign);
+	...
+}	
+```
+
+```
+@Override
+public void onListItemClick(ListView l, View v, int position, long id ){
+			
+	Resource resource = mCampaign.getResources().get(position);
+	MobiquityManager.sendResourceViewedEvent(resource);
+	...
+}	
+```
+
+If you want to appen user information on every tracking event you can do so by ..
+
+```	
+	
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+	
+	...
+
+	MobiquityManager.connect(this, new On.ServiceReady() {
+			
+		@Override
+		public void onReady() {
+				
+			TrackingUser trackingUser = new TrackingUser.Builder("developer")
+				.provider("facebook.com")
+				.username("enric@mobiquitynetworks.com")
+				.audience(new TrackingAudience.Builder()
+					.education(Education.GRAD_SCHOOL)
+					.gender(Gender.MALE)
+					.maritalStatus(MaritalStatus.SINGLE)
+					.build())
+				.build();						
+			MobiquityManager.setTrackingUserInformation(trackingUser);
+			MobiquityManager.startRanging();
+			
+		}
+			
+		...
+	});
+}	
+```
+The last piece of code sets the user for all events and might generate something like this for an exit beacon event:
+>
+{ device: 
+   { idDev: '70c1dc255de67868',
+     idFA: '2de252cf-566e-4292-a9d3-532255dfa520',
+     type: 'samsung GT-I9505',
+     os: 'Android',
+     osVersion: '4.4.2' },
+  event: 
+   { timestamp: '2014-07-14T15:19:02.809Z',
+     type: 'EXBC',
+     value: 
+      { minor: 210,
+        major: 1,
+        uuid: '03BBAC2B-46ED-8B5A-51D5-79AB39DE6526' } },
+  sdk: { version: '1.0.0' },
+  user: 
+   { audience: { education: 'GS', gender: 'M', maritalStatus: 'SG', kids: 0 },
+     provider: 'facebook.com',
+     role: 'developer',
+     username: 'enric@mobiquitynetworks.com' } }
+
+
+
+
+---
 
 ##Author
 
