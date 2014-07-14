@@ -385,8 +385,9 @@ protected void onCreate(Bundle savedInstanceState) {
 	});
 }	
 ```
-The last piece of code sets the user for all events and might generate something like this for an exit beacon event:
->
+The last piece of code appends the user information to the overall tracking info, so when beacon events show up this info will be sent together with the device and event info. A serialized event might look like something like this for an exit beacon:
+
+```
 { device: 
    { idDev: '70c1dc255de67868',
      idFA: '2de252cf-566e-4292-a9d3-532255dfa520',
@@ -400,13 +401,14 @@ The last piece of code sets the user for all events and might generate something
       { minor: 210,
         major: 1,
         uuid: '03BBAC2B-46ED-8B5A-51D5-79AB39DE6526' } },
-  sdk: { version: '1.0.0' },
+  sdk: { version: '0.1.0' },
   user: 
    { audience: { education: 'GS', gender: 'M', maritalStatus: 'SG', kids: 0 },
      provider: 'facebook.com',
      role: 'developer',
-     username: 'enric@mobiquitynetworks.com' } }
-
+     username: 'enric@mobiquitynetworks.com' } 
+}
+```
 
 
 
