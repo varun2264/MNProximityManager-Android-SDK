@@ -385,7 +385,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	});
 }	
 ```
-The last piece of code appends the user information to the overall tracking info, so when beacon events show up this info will be sent together with the device and event info. A serialized event might look like something like this for an exit beacon:
+The last piece of code appends the user information to the overall tracking info, so when beacon events show up the user structure will be sent together with the device and event structures. A serialized event might look like something like this for an exit beacon:
 
 ```
 { device: 
