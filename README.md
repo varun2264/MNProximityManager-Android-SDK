@@ -353,10 +353,9 @@ public void onListItemClick(ListView l, View v, int position, long id ){
 }	
 ```
 
-If you want to appen user information on every tracking event you can do so by ..
+If you want to append the user information on every tracking request you can do so by **informing** the SDK about the user.
 
-```	
-	
+```		
 @Override
 protected void onCreate(Bundle savedInstanceState) {
 	
@@ -410,7 +409,7 @@ The last piece of code appends the user information to the overall tracking info
 }
 ```
 
-
+At any moment the user tracking info can removed by calling _MobiquityManager.removeTrackingUserInformation_,from that point onwards no custom user info will be appended to the requests.
 
 ---
 
