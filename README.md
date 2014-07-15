@@ -409,7 +409,7 @@ The last piece of code appends the user information to the overall tracking info
 }
 ```
 
-At any moment the user tracking info can removed by calling _MobiquityManager.removeTrackingUserInformation_,from that point onwards no custom user info will be appended to the requests.
+At any moment the user tracking info can be removed by calling _MobiquityManager.removeTrackingUserInformation_,from that point onwards no custom user info will be appended to the requests.
 
 ---
 
