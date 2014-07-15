@@ -331,7 +331,7 @@ You can get a lot of intrinsic information about the emitting device from the _B
 ###Tracking
 
 
-As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) when a beacon is first discovered and also when it becomes out of range. Besides these automatic events you can manually track other events from the BeaconManager. Following you have some examples:
+As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) when a beacon is first discovered and also when it becomes out of range. Besides these automatic events you can manually track other events, following you have some examples:
 
 ```
 @Override
