@@ -5,7 +5,7 @@ The Android Proximity Manager, _APM_ from now on, is a library dedicated to mana
 
 ## Release notes
 * ### 0.1.0  
-First release (alpha).
+First release (beta).
 
 
 
@@ -21,7 +21,7 @@ Following you will find the requirements to start programming an App which benef
 
 ## Project setup
 
-All following instructions assume you have created an Android project in your IDE. The lines below explain how you must configure the project to start developing. As the SDK depends on some other jars you will also need to include them in your project together with the _APM_ jar file  **mnapm.jar**. 
+The following instructions assume you have created an Android project in your IDE. The lines below explain how you must configure the project to start developing. As the SDK depends on some other jars you will also need to include them in your project together with the _APM_ jar file  **mnapm.jar**. 
 
 You can go through this process by manually downloading the jars from the Internet or by using a dependency control manager like Maven or Gradle. No matter how but you must end up with all these jars on your project's build path:
 
@@ -83,7 +83,7 @@ The next thing to do is to set up the AndroidManifest.xml file with some mandato
 
 To understand why you have to add all these components to your Manifest you should know that _APM_'s heavy duty is based on an underlying service capable of monitoring the environment on background, ranging on foreground, sendind statistics and downloading relevant content when a beacon is found. So, all these components assist the _APM_'s forementioned service to get the job done: booting, staying awake and scanning the environment with a minimal footprint on the device battery life.
 
-The final step of the setup is to create a properties file in **assets/properties/mobiquity.properties** where you will place your api key and secret that you got from the [management panel](http://panel.mobiquitynetworks.com). 
+The final step of the setup is to create a properties file in **assets/properties/mobiquity.properties** where you will place your App key and secret that you got from the [Mobiquity Networks Management Panel](http://panel.mobiquitynetworks.com). 
 
 
 ```
@@ -96,7 +96,7 @@ The final step of the setup is to create a properties file in **assets/propertie
 
 ```
 
-As you can see in this file you not only set which is your api key and secret, but also may set many other optional parameters that configure how _APM_ behaves.
+As you can see in this file you are not only setting which is your App key and secret, you can set also many other optional parameters that configure how _APM_ behaves.
 
 
 ---
@@ -142,7 +142,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
 When the service has finished booting with no errors, it will be ready to accept requests and at that time the _onReady_ callback  will be called, otherwise the error callback will be called. Once the internal connection is stablished you may start ranging the environment. As you can see in the example above, this is the first action we take when the service is connected as the App is in foreground and it's fine to start _ranging_ at this Activity's lifecycle point. 
 
-When the App goes to background you can change the scanning mode to monitoring to minimize the battery drain of the ble scanning operation. A perfect point to perform this change is _onPause_ or _onStop_ since at this time the App is about to go to background: 
+When the App goes to background you can change the scanning mode to monitoring to minimize the battery drain of the BLE (Bluetooth Low Energy) scanning operation. A perfect point to perform this change is _onPause_ or _onStop_ since at this time the App is about to go to background: 
 
 ```
 @Override
@@ -168,7 +168,7 @@ protected void onResume(){
 
 ```
 
-Don't need to call _stopMonitoring_ or _stopRanging_ before _startRanging_ or _startMonitoring_ because this is done internally. In addition, if you App's flow needs at some point to stop scanning the environment just call _stopMonitoring_ or _stopRanging_.
+Don't need to call _stopMonitoring_ or _stopRanging_ before _startRanging_ or _startMonitoring_ because this is done internally. In addition, if your App's flow needs to stop scanning the environment at some point just call _stopMonitoring_ or _stopRanging_.
 
 Last but not least, you can set up via the properties config file the ON and OFF cycle durations of the monitoring background operation. The default values are 5 and 15 seconds respectively. 
 
@@ -412,10 +412,6 @@ The last piece of code appends the user information to the overall tracking info
 At any moment the user tracking info can be removed by calling _MobiquityManager.removeTrackingUserInformation_, from that point onwards no user info will be appended to the requests.
 
 ---
-
-##Author
-
-Enric Cecilla, [enric@mobiquitynetworks.com](mailto:enric@mobiquitynetworks.com)
 
 ##License
 
