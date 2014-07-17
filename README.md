@@ -362,7 +362,7 @@ public void onListItemClick(ListView l, View v, int position, long id ){
 }	
 ```
 
-If you want to append the user information on every tracking request you can do so by **informing** the SDK about the user.
+If you want to append some user information on every tracking request you can do so by **informing** the SDK about the user:
 
 ```		
 @Override
@@ -384,7 +384,7 @@ protected void onCreate(Bundle savedInstanceState) {
 					.maritalStatus(MaritalStatus.SINGLE)
 					.build())
 				.build();						
-			MobiquityManager.setTrackingUserInformation(trackingUser);
+			<b>MobiquityManager.setTrackingUserInformation(trackingUser);</b>
 			MobiquityManager.startRanging();
 			
 		}
@@ -393,7 +393,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	});
 }	
 ```
-The last piece of code appends the user information to the overall tracking info, so when beacon events show up the user structure will be sent together with the device and event structures. A serialized event might look like something like this for an exit beacon:
+The last piece of code appends some user information to the overall tracking information, so when beacon events show up the user structure will be sent together with the device and event structures. The JSON representation for an exit beacon event might look like this:
 
 ```
 { device: 
