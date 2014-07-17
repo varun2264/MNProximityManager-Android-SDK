@@ -374,7 +374,8 @@ protected void onCreate(Bundle savedInstanceState) {
 			
 		@Override
 		public void onReady() {
-				
+			
+			//BUILDING USER TRACKING INFORMATION
 			TrackingUser trackingUser = new TrackingUser.Builder("developer")
 				.provider("facebook.com")
 				.username("enric@mobiquitynetworks.com")
@@ -384,7 +385,9 @@ protected void onCreate(Bundle savedInstanceState) {
 					.maritalStatus(MaritalStatus.SINGLE)
 					.build())
 				.build();						
-			<b>MobiquityManager.setTrackingUserInformation(trackingUser);</b>
+			
+			//INFORMING APM ABOUT THE USER	
+			MobiquityManager.setTrackingUserInformation(trackingUser);
 			MobiquityManager.startRanging();
 			
 		}
