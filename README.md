@@ -388,6 +388,7 @@ protected void onCreate(Bundle savedInstanceState) {
 			
 			//INFORMING APM ABOUT THE USER	
 			MobiquityManager.setTrackingUserInformation(trackingUser);
+			...
 			MobiquityManager.startRanging();
 			
 		}
