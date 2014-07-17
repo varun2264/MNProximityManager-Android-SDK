@@ -397,7 +397,7 @@ protected void onCreate(Bundle savedInstanceState) {
 	});
 }	
 ```
-The last piece of code appends some user information to the overall tracking information, so when beacon events show up the user structure will be sent together with the device and event structures. The JSON representation for an exit beacon event might look like this:
+The above piece of code appends some user information to the overall tracking information, so when beacon events show up the user structure will be sent together with the device and event structures. The JSON representation for an exit beacon event might look like this:
 
 ```
 { device: 
