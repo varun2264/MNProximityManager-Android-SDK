@@ -169,7 +169,7 @@ protected void onResume(){
 
 ```
 
-Don't need to call _stopMonitoring_ or _stopRanging_ before _startRanging_ or _startMonitoring_ because this is done internally. In addition, if your App's flow needs to stop scanning the environment at some point just call _stopMonitoring_ or _stopRanging_.
+When you change between scanning modes don't need to stop ( _stopMonitoring_, _stopRanging_ ) the current mode  before starting the other ( _startRanging_, _startMonitoring_ ) because this is handled internally. In addition, if your App's flow needs to stop scanning the environment at some point just call _stopMonitoring_ or _stopRanging_.
 
 Last but not least, you can set up via the properties config file the ON and OFF cycle durations of the monitoring background operation. The default values are 5 and 15 seconds respectively. 
 
@@ -315,12 +315,13 @@ The _BeaconData_ object that is returned from the success callback exposes a set
 
 ###Getting Beacon information
 
-You can get a lot of intrinsic information about the emitting device from the _Beacon_ object, to point out a few:
+When you catch an _APM_ triggered _Broadcast Intent_ and unwrap the _Beacon_ object from the latter, can get a lot of intrinsic information about the emitting device by enquirying this _Beacon_ object. The following list points out a few features about the beacon sensor you have access to:
 
 * Name
 * Mac address
 * Minor, major and UUID
 * Distance
+* Distance Type
 * Last rssi measure
 * Creation timestamp 
 * Update timestamp
@@ -329,7 +330,10 @@ You can get a lot of intrinsic information about the emitting device from the _B
 * Estimated announcement period
 * Announcements counter
 
-###Tracking
+This information is extremely useful because lets you trigger business logic based on richer condition sets than just a mere sensor presence switch.
+
+
+###Tracking events: implicit and explicit
 
 
 As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) when a beacon is first discovered and also when it becomes out of range. Besides these automatic events you can manually track other events, following you have some examples:
