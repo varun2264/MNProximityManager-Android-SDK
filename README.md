@@ -336,7 +336,7 @@ This information is extremely useful because lets you trigger business logic bas
 ###Tracking the user
 
 
-As the user walks around a venue surrounded with beacons, _APM_ will automatically send tracking information (device information  and user information if available) under different conditions: when a beacon is first discovered, when announcement packets are being dropped by connectivity issues or when a beacon becomes out of range. Besides these internally generated events, as a developer you can track other stuff like campaigns viewed, resources viewed and so on. You will be able to manually track by calling some methods exposed by the facade component _MobiquityManager_ class.
+As the user walks around a venue surrounded by beacons, _APM_ will automatically send tracking information (device information  and user information if available) under different conditions: when a beacon is first discovered, when announcement packets are being dropped by connectivity issues or when a beacon becomes out of range. Besides these internally generated events, as a developer you can track other stuff like campaigns viewed, resources viewed and so on. You will be able to manually track by calling some methods exposed by the facade component _MobiquityManager_ class.
 
 Following you have some examples of explicit tracking to get insight into how to do it:
 
