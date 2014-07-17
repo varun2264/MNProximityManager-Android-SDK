@@ -315,7 +315,7 @@ The _BeaconData_ object that is returned from the success callback exposes a set
 
 ###Getting Beacon information
 
-When you catch an _APM_ triggered _Broadcast Intent_ and unwrap the _Beacon_ object from the latter, can get a lot of intrinsic information about the emitting device by enquirying this _Beacon_ object. The following list points out a few features about the beacon sensor you have access to:
+When you catch an _APM_ triggered _Broadcast Intent_ and unwrap the _Beacon_ object from the latter, can get a lot of intrinsic information about the emitting device by enquirying this _Beacon_ object. The following list points out a few features you have access to about a beacon sensor:
 
 * Name
 * Mac address
@@ -330,18 +330,21 @@ When you catch an _APM_ triggered _Broadcast Intent_ and unwrap the _Beacon_ obj
 * Estimated announcement period
 * Announcements counter
 
-This information is extremely useful because lets you trigger business logic based on richer condition sets than just a mere sensor presence switch.
+This information is extremely useful because lets you trigger business logic based on richer condition sets than just a mere presence switch.
 
 
-###Tracking events: implicit and explicit
+###Tracking events: automatic and manual
 
 
-As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) when a beacon is first discovered and also when it becomes out of range. Besides these automatic events you can manually track other events, following you have some examples:
+As the user walks around the venue and encounters beacons, _APM_ will automatically send tracking information (device information  and user information if available) under different conditions: when a beacon is first discovered, when announcement packets are being dropped by connectivity issues and when a beacon becomes out of range. Besides these internally generated events, as a developer you can manually track other stuff like campaign viewed, resource viewed, etc... You will be able to track by calling some methods exposed by the facade component _MobiquityManager_ class.
+
+Following you have some examples with explicit tracking calls to get insight into how to do it:
 
 ```
 @Override
 public void onListItemClick(ListView l, View v, int position, long id ){
-			
+	
+	//get campaign from in memory datastore
 	Campaign campaign = DataManager.getAllCampaigns().get(position);
 	MobiquityManager.sendCampaignViewedEvent(campaign);
 	...
@@ -352,6 +355,7 @@ public void onListItemClick(ListView l, View v, int position, long id ){
 @Override
 public void onListItemClick(ListView l, View v, int position, long id ){
 			
+	//get resource from in memory datastore
 	Resource resource = mCampaign.getResources().get(position);
 	MobiquityManager.sendResourceViewedEvent(resource);
 	...
