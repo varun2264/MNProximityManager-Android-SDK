@@ -4,7 +4,7 @@ Android Proximity Manager SDK 0.1.0
 The Android Proximity Manager, _APM_ from now on, is a library dedicated to manage the interaction between an App and Mobiquity's beacons network. The integration of this SDK will enable your App to react based on the proximity to a beacon of yours or Mobiquity's. At the time of this writing the SDK version is **0.1.0**, so some deep changes to the api might come up in future versions.
 
 ## Release notes
-* ### 0.1.0  
+*  **0.1.0**  
 First release (beta).
 
 
